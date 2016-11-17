@@ -102,6 +102,9 @@ class CheckingAccount
         return $deposits - $withdrawals - $transfers;
     }
 
+    /**
+     * @return float
+     */
     public function holds(): float
     {
         $holds = 0.0;

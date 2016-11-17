@@ -15,6 +15,9 @@ class Charge
         $this->amount = $amount;
     }
 
+    /**
+     * @return float
+     */
     public function amount(): float
     {
         return $this->amount;

@@ -23,11 +23,17 @@ class Deposit
         $this->isCleared = $isCleared;
     }
 
+    /**
+     * @return bool
+     */
     public function isCleared(): bool
     {
         return $this->isCleared;
     }
 
+    /**
+     * @return float
+     */
     public function amount(): float
     {
         return $this->amount;
