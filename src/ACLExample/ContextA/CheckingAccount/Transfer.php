@@ -1,6 +1,6 @@
 <?php
 
-namespace DDDHH\ACLExample\ContextA;
+namespace DDDHH\ACLExample\ContextA\CheckingAccount;
 
 /**
  * Transfer of money from one account to another.

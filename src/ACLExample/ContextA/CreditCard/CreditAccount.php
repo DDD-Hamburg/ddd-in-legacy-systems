@@ -1,6 +1,6 @@
 <?php
 
-namespace DDDHH\ACLExample\ContextA;
+namespace DDDHH\ACLExample\ContextA\CreditAccount;
 
 /**
  * A credit account

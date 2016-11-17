@@ -1,8 +1,11 @@
 <?php
 
-namespace DDDHH\ACLExample\ContextA;
+namespace DDDHH\ACLExample\ContextA\CheckingAccount;
 
-class Charge
+/**
+ * The removal of money or securities from a bank or other place of deposit.
+ */
+class Withdrawal
 {
     /** @var float */
     private $amount;

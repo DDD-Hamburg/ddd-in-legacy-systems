@@ -1,6 +1,6 @@
 <?php
 
-namespace DDDHH\ACLExample\ContextA;
+namespace DDDHH\ACLExample\ContextA\CheckingAccount;
 
 /**
  * A sum of money deposited in a bank usually at interest.

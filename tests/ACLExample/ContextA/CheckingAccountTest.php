@@ -1,6 +1,6 @@
 <?php
 
-namespace DDDHH\ACLExample\ContextA;
+namespace DDDHH\ACLExample\ContextA\CheckingAccount;
 
 use PHPUnit\Framework\TestCase;
 
