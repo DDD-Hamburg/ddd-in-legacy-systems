@@ -1,0 +1,5 @@
+/vendor/
+/build/
+/docs/
+/scripts/composer
+/scripts/phpunit

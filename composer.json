@@ -1,0 +1,21 @@
+{
+    "name": "ddd-hamburg/ddd-in-legacy-systems",
+    "description": "Example implementation of ACL concepts from Eric Evans' paper 'Getting Started With DDD When Surrounded By Legacy Systems'",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {"DDDHH\\": "src/"}
+    },
+    "config": {
+       "bin-dir": "scripts"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hauke Stange",
+            "email": "hauke.stange@posteo.de"
+        }
+    ]
+}

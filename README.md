@@ -1,2 +1,25 @@
-# ddd-in-legacy-systems
-Implementation of the example in the paper "Getting Started With DDD When Sorrounded By Legacy Systems" (Evans, 2013)
+# DDD In Legacy Systems
+
+Example implementation of ACL concepts from Eric Evans' paper
+["Getting Started With DDD When Surrounded By Legacy Systems"](http://domainlanguage.com/wp-content/uploads/2016/04/GettingStartedWithDDDWhenSurroundedByLegacySystemsV1.pdf).
+
+## Setup
+
+```
+# Clone the repo
+$ git clone git@github.com:DDD-Hamburg/ddd-in-legacy-systems.git
+
+# Install composer and project dependencies
+$ make bootstrap
+```
+
+## General Information
+
+The repository provides a `Makefile` to help you speeding up your development process.
+
+```
+$ make help
+bootstrap    Install composer
+tests        Execute test suite and create code coverage report
+update       Update composer packages
+```
