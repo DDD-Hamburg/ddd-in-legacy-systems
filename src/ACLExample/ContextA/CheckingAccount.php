@@ -57,24 +57,7 @@ class CheckingAccount
      */
     public function balance(): float
     {
-        $deposits = 0.0;
-        foreach ($this->deposits as $deposit) {
-            $deposits += $deposit->amount();
-        }
-
-        $withdrawals = 0.0;
-        foreach ($this->withdrawals as $withdrawal) {
-            $withdrawals += $withdrawal->amount();
-        }
-
-        $completedTransfers = 0.0;
-        foreach ($this->transfers as $transfer) {
-            if (!$transfer->hold()) {
-                $completedTransfers += $transfer->amount();
-            }
-        }
-
-        return $deposits - $withdrawals - $completedTransfers;
+        return $this->deposits(false) - $this->withdrawals() - $this->transfers(true);
     }
 
     /**
@@ -82,24 +65,7 @@ class CheckingAccount
      */
     public function availableBalance(): float
     {
-        $deposits = 0.0;
-        foreach ($this->deposits as $deposit) {
-            if ($deposit->isCleared()) {
-                $deposits += $deposit->amount();
-            }
-        }
-
-        $withdrawals = 0.0;
-        foreach ($this->withdrawals as $withdrawal) {
-            $withdrawals += $withdrawal->amount();
-        }
-
-        $transfers = 0.0;
-        foreach ($this->transfers as $transfer) {
-            $transfers += $transfer->amount();
-        }
-
-        return $deposits - $withdrawals - $transfers;
+        return $this->deposits(true) - $this->withdrawals() - $this->transfers(false);
     }
 
     /**
@@ -114,5 +80,65 @@ class CheckingAccount
             }
         }
         return $holds;
+    }
+
+    /**
+     * @param bool $clearedOnly
+     * @return float
+     */
+    private function deposits(bool $clearedOnly): float
+    {
+        $clearedDeposits = 0.0;
+        $deposits = 0.0;
+
+        foreach ($this->deposits as $deposit) {
+            if ($deposit->isCleared()) {
+                $clearedDeposits += $deposit->amount();
+            } else {
+                $deposits += $deposit->amount();
+            }
+        }
+
+        if ($clearedOnly) {
+            return $clearedDeposits;
+        }
+
+        return $clearedDeposits + $deposits;
+    }
+
+    /**
+     * @return float
+     */
+    private function withdrawals(): float
+    {
+        $withdrawals = 0.0;
+        foreach ($this->withdrawals as $withdrawal) {
+            $withdrawals += $withdrawal->amount();
+        }
+        return $withdrawals;
+    }
+
+    /**
+     * @param bool $settledOnly
+     * @return float
+     */
+    private function transfers(bool $settledOnly): float
+    {
+        $settledTransfers = 0.0;
+        $holdTransfers = 0.0;
+
+        foreach ($this->transfers as $transfer) {
+            if ($transfer->hold()) {
+                $holdTransfers += $transfer->amount();
+            } else {
+                $settledTransfers += $transfer->amount();
+            }
+        }
+
+        if ($settledOnly) {
+            return $settledTransfers;
+        }
+
+        return $settledTransfers + $holdTransfers;
     }
 }
