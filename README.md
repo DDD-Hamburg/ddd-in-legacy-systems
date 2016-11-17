@@ -1,4 +1,4 @@
-# DDD In Legacy Systems
+# DDD In Legacy Systems [![Build Status](https://travis-ci.org/DDD-Hamburg/ddd-in-legacy-systems.svg?branch=master)](https://travis-ci.org/DDD-Hamburg/ddd-in-legacy-systems)
 
 Example implementation of ACL concepts from Eric Evans' paper
 ["Getting Started With DDD When Surrounded By Legacy Systems"](http://domainlanguage.com/wp-content/uploads/2016/04/GettingStartedWithDDDWhenSurroundedByLegacySystemsV1.pdf).
