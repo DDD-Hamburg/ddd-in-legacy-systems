@@ -7,6 +7,9 @@ namespace DDDHH\ACLExample\ContextA\CheckingAccount;
  */
 class CheckingAccount
 {
+    /** @var string */
+    private $customerId;
+
     /** @var Deposit[] */
     private $deposits;
 
@@ -17,15 +20,25 @@ class CheckingAccount
     private $transfers;
 
     /**
+     * @param string $customerId
      * @param Deposit[] $deposits
      * @param Withdrawal[] $withdrawals
      * @param Transfer[] $transfers
      */
-    public function __construct(array $deposits = [], array $withdrawals = [], array $transfers = [])
+    public function __construct(string $customerId, array $deposits = [], array $withdrawals = [], array $transfers = [])
     {
+        $this->customerId = $customerId;
         $this->deposits = $deposits;
         $this->withdrawals = $withdrawals;
         $this->transfers = $transfers;
+    }
+
+    /**
+     * @return string
+     */
+    public function customerId(): string
+    {
+        return $this->customerId;
     }
 
     /**

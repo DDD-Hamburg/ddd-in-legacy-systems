@@ -11,7 +11,7 @@ class CheckingAccountTest extends TestCase
      */
     public function itShouldCalculateBalance()
     {
-        $account = new CheckingAccount();
+        $account = new CheckingAccount('some customer id');
 
         $account->deposit(new Deposit(150.0, true));
         $account->deposit(new Deposit(50.0, false));
@@ -29,7 +29,7 @@ class CheckingAccountTest extends TestCase
      */
     public function itShouldCalculateAvailableBalance()
     {
-        $account = new CheckingAccount();
+        $account = new CheckingAccount('some customer id');
 
         $account->deposit(new Deposit(150.0, true));
         $account->deposit(new Deposit(50.0, false));
@@ -47,11 +47,22 @@ class CheckingAccountTest extends TestCase
      */
     public function itShouldCalculateHolds()
     {
-        $account = new CheckingAccount();
+        $account = new CheckingAccount('some customer id');
 
         $account->transfer(new Transfer(10.0, true));
         $account->transfer(new Transfer(15.0, false));
 
         $this->assertEquals(10.0, $account->holds());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldBelongToCustomer()
+    {
+        $customerId = 'some customer id';
+        $account = new CheckingAccount($customerId);
+
+        $this->assertEquals($customerId, $account->customerId());
     }
 }

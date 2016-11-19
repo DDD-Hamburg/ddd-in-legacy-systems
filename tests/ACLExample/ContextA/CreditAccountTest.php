@@ -12,7 +12,7 @@ class CreditAccountTest extends TestCase
     public function itShouldCalculateAvailableCredit()
     {
         $limit = 2000.0;
-        $account = new CreditAccount($limit);
+        $account = new CreditAccount('some customer id', $limit);
 
         $account->charge(new Charge(500.0));
         $account->charge(new Charge(300.0));
@@ -26,7 +26,7 @@ class CreditAccountTest extends TestCase
     public function itShouldReturnZeroForAvailableCreditIfChargesAreAboveLimit()
     {
         $limit = 2000.0;
-        $account = new CreditAccount($limit);
+        $account = new CreditAccount('some customer id', $limit);
 
         $account->charge(new Charge(1500.0));
         $account->charge(new Charge(600.0));
@@ -40,11 +40,23 @@ class CreditAccountTest extends TestCase
     public function itShouldReturnBalance()
     {
         $limit = 2000.0;
-        $account = new CreditAccount($limit);
+        $account = new CreditAccount('some customer id', $limit);
 
         $account->charge(new Charge(1500.0));
         $account->charge(new Charge(400.0));
 
         $this->assertEquals(-1900.0, $account->balance());
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldBelongToCustomer()
+    {
+        $customerId = 'some customer id';
+        $limit = 2000.0;
+        $account = new CreditAccount($customerId, $limit);
+
+        $this->assertEquals($customerId, $account->customerId());
     }
 }

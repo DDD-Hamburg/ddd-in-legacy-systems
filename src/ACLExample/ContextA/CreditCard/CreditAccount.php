@@ -7,6 +7,9 @@ namespace DDDHH\ACLExample\ContextA\CreditAccount;
  */
 class CreditAccount
 {
+    /** @var string */
+    private $customerId;
+
     /** @var float */
     private $limit;
 
@@ -14,12 +17,23 @@ class CreditAccount
     private $charges;
 
     /**
+     * @param string $customerId
      * @param float $limit
+     * @param array $charges
      */
-    public function __construct(float $limit, array $charges = [])
+    public function __construct(string $customerId, float $limit, array $charges = [])
     {
+        $this->customerId = $customerId;
         $this->limit = $limit;
         $this->charges = $charges;
+    }
+
+    /**
+     * @return string
+     */
+    public function customerId(): string
+    {
+        return $this->customerId;
     }
 
     /**
