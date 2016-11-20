@@ -12,3 +12,6 @@ update: ## Update composer packages
 
 bootstrap: ## Install composer
 	./scripts/install-composer.sh && ./scripts/composer install
+
+initdb: ## Initialize test and prod dbs
+	./scripts/setup-db.sh

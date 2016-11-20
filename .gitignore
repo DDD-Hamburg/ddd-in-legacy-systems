@@ -3,3 +3,4 @@
 /docs/
 /scripts/composer
 /scripts/phpunit
+/db/test.db
