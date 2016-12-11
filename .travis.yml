@@ -1,5 +1,7 @@
 language: php
 php:
   - 7.0
-before_script: make bootstrap
+before_script:
+  - make bootstrap
+  - make initdb
 script: make tests
