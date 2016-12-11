@@ -39,6 +39,23 @@ class CheckingAccountRepositoryTest extends TestCase
     }
 
     /**
+     * @test
+     */
+    public function itShouldFindCheckingAccountByCustomerId()
+    {
+        $repo = new CheckingAccountRepository($this->db);
+
+        $customerId = 'FFSS-123';
+        $expectedAccount = $this->aCheckingAccount($customerId);
+
+        $repo->save($expectedAccount);
+
+        $account = $repo->findByCustomerId($customerId);
+
+        $this->assertEquals($expectedAccount, $account);
+    }
+
+    /**
      * @param string $customerId
      * @return CheckingAccount
      */
