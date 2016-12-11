@@ -11,7 +11,7 @@ class CheckingAccountRepositoryTest extends TestCase
 
     protected function setUp()
     {
-        $file = realpath(__DIR__ . '/../../../db/test.db');
+        $file = realpath(__DIR__ . '/../../../../db/test.db');
         $this->db = new \SQLite3($file);
     }
 
