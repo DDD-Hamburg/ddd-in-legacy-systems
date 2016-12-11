@@ -3,7 +3,7 @@
 namespace DDDHH\ACLExample\ContextA\CheckingAccount;
 
 /**
- * A banking account
+ * A banking account repository
  */
 class CheckingAccountRepository
 {
